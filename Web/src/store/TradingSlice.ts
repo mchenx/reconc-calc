@@ -99,7 +99,7 @@ const TradingSlice = createSlice({
             .addCase(loadTradings.rejected, (state) => {
             //     state.isLoading = false;
             //     state.isError = true;
-                toast("Unable to load tradings, something wrong with the server !")
+                toast.error("Unable to load tradings, something wrong with the server !")
             })
             // .addCase(getReports.pending, (state) => {
             //     state.isLoading = true;
@@ -109,11 +109,12 @@ const TradingSlice = createSlice({
                 // state.isLoading = false;
                 // state.isError = false;
                 state.reports = action.payload?.reports || [];
+                toast.success("Report generated successfully.", { autoClose: 2000 })
             })
             .addCase(getReports.rejected, (state) => {
             //     state.isLoading = false;
             //     state.isError = true;
-                toast("Cannot generate report, something wrong on server side !",{})
+                toast.error("Cannot generate report, something wrong on server side !")
             })
     }
 });
