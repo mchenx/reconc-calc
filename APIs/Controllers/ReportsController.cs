@@ -8,14 +8,14 @@ namespace Web.API.Controllers;
 public class ReportsController : ControllerBase
 {
     private readonly ILogger _logger;
-    private readonly ReconcCalculator _calculator;
+    private readonly IReconcCalculator _calculator;
     private readonly ITradingBusinessLogic _tradingBusiness;
     private readonly IInsuranceBusinessLogic _insuranceBusiness;
     private readonly ICounterpartyBusinessLogic _counterpartiesBusiness;
 
     public ReportsController(
         ILogger<ReportsController> logger, 
-        ReconcCalculator calculator,
+        IReconcCalculator calculator,
         ITradingBusinessLogic tradingBusiness,
         IInsuranceBusinessLogic insuranceBusiness,
         ICounterpartyBusinessLogic counterpartiesBusiness)

@@ -6,9 +6,9 @@ namespace Cargill.Reconc.Business
     public class ReportBusinessLogic
     {
         private readonly ReportsRepo _repo;
-        private readonly ReconcCalculator _calculator;
+        private readonly IReconcCalculator _calculator;
 
-        public ReportBusinessLogic(ReportsRepo repo, ReconcCalculator calculator)
+        public ReportBusinessLogic(ReportsRepo repo, IReconcCalculator calculator)
         {
             _repo = repo;
             _calculator = calculator;

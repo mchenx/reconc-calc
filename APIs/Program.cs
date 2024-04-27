@@ -19,7 +19,7 @@ builder.Services.AddScoped<ITradingBusinessLogic, TradingBusinessLogic>();
 builder.Services.AddScoped<ICounterpartyBusinessLogic, CounterpartyBusinessLogic>();
 builder.Services.AddScoped<IInsuranceBusinessLogic, InsuranceBusinessLogic>();
 builder.Services.AddScoped<ReportBusinessLogic>();
-builder.Services.AddScoped<ReconcCalculator>();
+builder.Services.AddScoped<IReconcCalculator, ReconcCalculator>();
 
 builder.Services.AddCors(options =>
 {

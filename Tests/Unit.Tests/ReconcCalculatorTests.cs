@@ -1,4 +1,4 @@
-namespace Unit.Tests;
+namespace Cargill.Reconc.UnitTests;
 
 public class ReconcCalculatorTests
 {

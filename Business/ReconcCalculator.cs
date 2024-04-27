@@ -2,7 +2,13 @@ using Cargill.Reconc.Models;
 
 namespace Cargill.Reconc.Business
 {
-    public class ReconcCalculator
+    public interface IReconcCalculator
+    {
+        public Task<Report[]> GetBatchReports(Trading[] tradings, Counterparty[] counterparties, Insurance[] insurances);
+        public Report GetReportByTrading(TradingAggregation t, Insurance? insurance, double pdRate);
+    }
+
+    public class ReconcCalculator : IReconcCalculator
     {
         public Task<Report[]> GetBatchReports(Trading[] tradings, Counterparty[] counterparties, Insurance[] insurances)
         {
