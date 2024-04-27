@@ -24,8 +24,8 @@ export interface ITrading {
 }
 
 export interface ITradingState {
-    isLoading: boolean;
-    isError: boolean;
+    // isLoading: boolean;
+    // isError: boolean;
     tradings: ITrading[];
     reports: IReport[];
 
