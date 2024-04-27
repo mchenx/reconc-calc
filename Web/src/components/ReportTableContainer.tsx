@@ -2,6 +2,8 @@ import { IReport } from '../store/TradingSlice';
 import './ReportTable.css'
 import { useAppSelector } from '..';
 import { ReportTable } from './ReportTable';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function ReportTableContainer() {
 
@@ -22,6 +24,11 @@ export function ReportTableContainer() {
     })
 
     return (
+        <>
         <ReportTable data = {data} />
+        <div>
+           <ToastContainer theme='dark' autoClose={9000} />
+        </div>
+        </>
     )
 }

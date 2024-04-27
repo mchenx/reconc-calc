@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { IAppData } from '..';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import Configurations from '../Configurations';
 import axios from 'axios';
 
@@ -42,9 +42,9 @@ export interface IReport {
     netExpose: number
 }
 
-const initialState: ITradingState  = {
-    isLoading: false,
-    isError: false,
+export const initialState: ITradingState  = {
+    // isLoading: false,
+    // isError: false,
     tradings: [],
     reports: []
 }
@@ -96,10 +96,11 @@ const TradingSlice = createSlice({
                 // state.isError = false;
                 state.tradings = action.payload?.tradings || [];
             })
-            // .addCase(loadTradings.rejected, (state) => {
+            .addCase(loadTradings.rejected, (state) => {
             //     state.isLoading = false;
             //     state.isError = true;
-            // })
+                toast("Unable to load tradings, something wrong with the server !")
+            })
             // .addCase(getReports.pending, (state) => {
             //     state.isLoading = true;
             //     state.isError = false;
@@ -109,10 +110,11 @@ const TradingSlice = createSlice({
                 // state.isError = false;
                 state.reports = action.payload?.reports || [];
             })
-            // .addCase(getReports.rejected, (state) => {
+            .addCase(getReports.rejected, (state) => {
             //     state.isLoading = false;
             //     state.isError = true;
-            // })
+                toast("Cannot generate report, something wrong on server side !",{})
+            })
     }
 });
 
