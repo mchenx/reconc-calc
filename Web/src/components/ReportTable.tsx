@@ -42,7 +42,7 @@ export function ReportTable(props: IReportTableProps) {
                 {getHeaderGroups().map((hg => (
                     <tr key={hg.id}>
                         {hg.headers.map((col) => (
-                            <th key={hg.id} colSpan={col.colSpan}>
+                            <th key={col.index} colSpan={col.colSpan}>
                                 { flexRender(col.column.columnDef.header, col.getContext())}
                             </th>
                         ))}
