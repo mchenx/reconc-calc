@@ -1,62 +1,66 @@
+import { format } from "date-fns"
+
 export const ReportTableColumns = [
     {
-        Header: 'A/C Code',
-        accessor: 'code'
+        header: 'A/C Code',
+        accessorKey: 'code',
     },
     {
-        Header: 'Description',
-        accessor: 'description'
+        header: 'Description',
+        accessorKey: 'description'
     },
     {
-        Header: 'Supplier code',
-        accessor: 'supplierCode'
+        header: 'Supplier code',
+        accessorKey: 'supplierCode'
     },
     {
-        Header: 'Supplier name',
-        accessor: 'supplierName'
+        header: 'Supplier name',
+        accessorKey: 'supplierName'
     },
     {
-        Header: 'contract no.',
-        accessor: 'contractNo'
+        header: 'contract no.',
+        accessorKey: 'contractNo'
     },
     {
-        Header: 'Due date',
-        accessor: 'dueDate'
+        header: 'Due date',
+        accessorKey: 'dueDate',
+        cell: ({ getValue }: any) => format(getValue(), 'MM/dd/yyyy')
     },
     {
-        Header: 'AMOUNT IN CTRM (USD)',
-        accessor: 'amountInCTRM'
+        header: 'AMOUNT IN CTRM (USD)',
+        accessorKey: 'amountInCTRM'
     },
     {
-        Header: 'Amount In JDE',
-        accessor: 'amountInJDE',
+        header: 'Amount In JDE',
+        accessorKey: 'amountInJDE',
     },
     {
-        Header: 'PD Rate',
-        accessor: 'pdRate'
+        header: 'PD Rate',
+        accessorKey: 'pdRate'
     },
     {
-        Header: 'Expected Loss',
-        accessor: 'expectedLoss'
+        header: 'Expected Loss',
+        accessorKey: 'expectedLoss',
+        cell: ({ getValue }: any) => getValue()?.toFixed(2)
     },
     {
-        Header: 'SF Acct Title',
-        accessor: 'sfAccountTitle'
+        header: 'SF Acct Title',
+        accessorKey: 'sfAccountTitle'
     },
     // {
-    //     Header: 'Insurance',
-    //     accessor: 'hasInsurance'
+    //     header: 'Insurance',
+    //     accessorKey: 'hasInsurance'
     // },
     {
-        Header: 'Insurance Rate',
-        accessor: 'insuranceRate'
+        header: 'Insurance Rate',
+        accessorKey: 'insuranceRate'
     },
     {
-        Header: 'Insurance Limit USD',
-        accessor: 'insuranceLimit'
+        header: 'Insurance Limit USD',
+        accessorKey: 'insuranceLimit'
     },
     {
-        Header: 'Net Exposure',
-        accessor: 'netExposure'
+        header: 'Net Exposure',
+        accessorKey: 'netExposure'
     }
 ]

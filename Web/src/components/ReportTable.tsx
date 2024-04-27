@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
-import { Column, useTable } from 'react-table'
 import { ReportTableColumns } from "./ReportTableColumns";
 import { IReport, ITrading } from '../store/TradingSlice';
 import './ReportTable.css'
+import { useReactTable, flexRender, getCoreRowModel } from '@tanstack/react-table';
 
 interface IReportTableProps {
     tradings: ITrading[];
@@ -11,7 +11,7 @@ interface IReportTableProps {
 
 export function ReportTable(props: IReportTableProps) {
     
-    const columns = useMemo<Column[]>(() => ReportTableColumns, [])
+    const columns = useMemo(() => ReportTableColumns, [])
     const { tradings, reports } = props
 
     const reportsDict = reports.reduce((dict, item) => {
@@ -28,31 +28,36 @@ export function ReportTable(props: IReportTableProps) {
         return {...report, ...t,}
     })
     
-    const tableInstance = useTable({
+    const tableInstance = useReactTable({
         columns,
-        data
+        data,
+        getCoreRowModel: getCoreRowModel()
     })
 
-    const { getTableProps, getTableBodyProps, rows, headerGroups, prepareRow } = tableInstance
+    const { getHeaderGroups, getRowModel } = tableInstance
 
     return (
-        <table {...getTableProps()}>
+        <table>
             <thead>
-                {headerGroups.map((hg => (
-                    <tr {...hg.getHeaderGroupProps()}>
+                {getHeaderGroups().map((hg => (
+                    <tr key={hg.id}>
                         {hg.headers.map((col) => (
-                            <th {...col.getHeaderProps()}>{col.render('Header')}</th>
+                            <th key={hg.id} colSpan={col.colSpan}>
+                                { flexRender(col.column.columnDef.header, col.getContext())}
+                            </th>
                         ))}
                     </tr>
                 )))}
             </thead>
-            <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
-                    prepareRow(row)
+            <tbody>
+                {getRowModel().rows.map((row) => {
                     return (
-                        <tr {...row.getRowProps()}>
-                            {row.cells.map((cell) => {
-                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                        <tr key={row.id}>
+                            {row.getVisibleCells().map((cell) => {
+                                return (
+                                    <td key={cell.id}>
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </td>)
                             })}
                         </tr>
                     )
