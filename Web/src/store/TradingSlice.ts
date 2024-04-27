@@ -32,7 +32,7 @@ export interface ITradingState {
 }
 
 export interface IReport {
-    id: number,
+    reportId: number,
     tradingId: number,
     hasInsurance: boolean,
     pdRate: number,

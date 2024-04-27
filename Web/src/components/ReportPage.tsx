@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import { Suspense, useEffect } from 'react';
 import { loadTradings, getReports, clearReports } from '../store/TradingSlice';
-import { useAppDispatch, useAppSelector } from '..';
-import { ReportTable } from './ReportTable';
+import { useAppDispatch } from '..';
+import { ReportTableContainer } from './ReportTableContainer';
 
 
 export function ReportPage () {
@@ -12,11 +12,11 @@ export function ReportPage () {
         dispatch(loadTradings());
     }, []);
 
-    const { tradings, reports } = useAppSelector((state) => state.data)
-
     return (
     <>
-        <ReportTable tradings={tradings} reports={reports} />
+        <Suspense fallback={"loading..."}>
+            <ReportTableContainer />
+        </Suspense>
         <button onClick={() => dispatch(getReports())}>Calculate</button>
         <button onClick={() => dispatch(clearReports())}>Clear</button>
     </>);
