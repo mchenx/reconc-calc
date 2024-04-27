@@ -11,10 +11,10 @@ namespace Cargill.Reconc.Data
         public async Task<IEnumerable<Trading>> GetTradings()
         {
             var sql = @"
-                SELECT  t.*,
-                        c.NameInJDE AS SfAccountTitle
-                FROM    dbo.Tradings t WITH (NOLOCK)
-                LEFT JOIN dbo.Counterparties c WITH (NOLOCK) ON t.SupplierCode = c.Code";
+                SELECT      t.*,
+                            c.NameInJDE AS SfAccountTitle
+                FROM        dbo.Tradings t WITH (NOLOCK)
+                LEFT JOIN   dbo.Counterparties c WITH (NOLOCK) ON t.SupplierCode = c.Code";
             using (var conn = GetConnection())
             {
                 return await conn.QueryAsync<Trading>(sql);
@@ -24,8 +24,10 @@ namespace Cargill.Reconc.Data
         public async Task<Trading?> GetById(int tradingId)
         {
             var sql = @"
-                SELECT  *
-                FROM    dbo.Tradings WITH (NOLOCK)
+                SELECT      *,
+                            c.NameInJDE AS SfAccountTitle
+                FROM        dbo.Tradings t WITH (NOLOCK)
+                LEFT JOIN   dbo.Counterparties c WITH (NOLOCK) ON t.SupplierCode = c.Code
                 WHERE Id=@tradingId";
 
             using(var conn = GetConnection())

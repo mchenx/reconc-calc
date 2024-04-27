@@ -9,9 +9,9 @@ namespace Web.API.Controllers;
 public class TradingsController : ControllerBase
 {
     private readonly ILogger _logger;
-    private readonly TradingBusinessLogic _business;
+    private readonly ITradingBusinessLogic _business;
 
-    public TradingsController(ILogger<TradingsController> logger, TradingBusinessLogic business)
+    public TradingsController(ILogger<TradingsController> logger, ITradingBusinessLogic business)
     {
         _logger = logger;
         _business = business;

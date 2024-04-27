@@ -15,9 +15,9 @@ builder.Services.AddScoped<TradingsRepo>();
 builder.Services.AddScoped<InsuranceRepo>();
 builder.Services.AddScoped<CounterpartiesRepo>();
 builder.Services.AddScoped<ReportsRepo>();
-builder.Services.AddScoped<TradingBusinessLogic>();
-builder.Services.AddScoped<CounterpartyBusinessLogic>();
-builder.Services.AddScoped<InsuranceBusinessLogic>();
+builder.Services.AddScoped<ITradingBusinessLogic, TradingBusinessLogic>();
+builder.Services.AddScoped<ICounterpartyBusinessLogic, CounterpartyBusinessLogic>();
+builder.Services.AddScoped<IInsuranceBusinessLogic, InsuranceBusinessLogic>();
 builder.Services.AddScoped<ReportBusinessLogic>();
 builder.Services.AddScoped<ReconcCalculator>();
 

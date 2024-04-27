@@ -3,7 +3,15 @@ using Cargill.Reconc.Models;
 
 namespace Cargill.Reconc.Business
 {
-    public class TradingBusinessLogic
+    public interface ITradingBusinessLogic
+    {
+        public Task<Trading[]> GetAll();
+        public Task<TradingAggregation?> AggregateBySupplier(int tradingId);
+        public Task<Trading?> GetById(int tradingId);
+        public Task<bool> AddTrading(Trading trade);
+    }
+
+    public class TradingBusinessLogic: ITradingBusinessLogic
     {
         private readonly TradingsRepo _repo;
         

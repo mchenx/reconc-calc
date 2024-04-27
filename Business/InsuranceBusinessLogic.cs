@@ -3,7 +3,13 @@ using Cargill.Reconc.Models;
 
 namespace Cargill.Reconc.Business
 {
-    public class InsuranceBusinessLogic
+    public interface IInsuranceBusinessLogic
+    {
+        public Task<Insurance[]> GetAll();
+        public Task<Insurance> GetById(int insuranceId);
+    }
+
+    public class InsuranceBusinessLogic: IInsuranceBusinessLogic
     {
         private readonly InsuranceRepo _repo;
 

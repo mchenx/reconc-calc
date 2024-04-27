@@ -9,16 +9,16 @@ public class ReportsController : ControllerBase
 {
     private readonly ILogger _logger;
     private readonly ReconcCalculator _calculator;
-    private readonly TradingBusinessLogic _tradingBusiness;
-    private readonly InsuranceBusinessLogic _insuranceBusiness;
-    private readonly CounterpartyBusinessLogic _counterpartiesBusiness;
+    private readonly ITradingBusinessLogic _tradingBusiness;
+    private readonly IInsuranceBusinessLogic _insuranceBusiness;
+    private readonly ICounterpartyBusinessLogic _counterpartiesBusiness;
 
     public ReportsController(
         ILogger<ReportsController> logger, 
         ReconcCalculator calculator,
-        TradingBusinessLogic tradingBusiness,
-        InsuranceBusinessLogic insuranceBusiness,
-        CounterpartyBusinessLogic counterpartiesBusiness)
+        ITradingBusinessLogic tradingBusiness,
+        IInsuranceBusinessLogic insuranceBusiness,
+        ICounterpartyBusinessLogic counterpartiesBusiness)
     {
         _logger = logger;
         _calculator = calculator;

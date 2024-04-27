@@ -3,7 +3,13 @@ using Cargill.Reconc.Models;
 
 namespace Cargill.Reconc.Business
 {
-    public class CounterpartyBusinessLogic
+    public interface ICounterpartyBusinessLogic
+    {
+        public Task<Counterparty[]> GetAll();
+        public Task<double?> GetPDRate(int supplierCode);
+    }
+
+    public class CounterpartyBusinessLogic: ICounterpartyBusinessLogic
     {
         private readonly CounterpartiesRepo _repo;
 
