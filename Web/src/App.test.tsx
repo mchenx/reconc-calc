@@ -1,23 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { thunk } from 'redux-thunk'
-import configureMockStore from 'redux-mock-store'
 import { Provider } from 'react-redux';
-import { ITradingState } from './store/TradingSlice';
 import { BrowserRouter } from 'react-router-dom';
 import { ReportTableColumns } from './components/ReportTableColumns';
-
-const middlewares = [ thunk as any ]
-const mockStore = configureMockStore(middlewares)
-const testTradingData: ITradingState = {
-  tradings: [],
-  reports: []
-}
-const initialiState = { data: { ...testTradingData }}
+import { mockStore, initialState } from '../__tests__/TestTradingData'
 
 test('renders trading table', () => {
 
-  const testStore = mockStore(initialiState)
+  const testStore = mockStore(initialState)
 
   render(
     <BrowserRouter>
@@ -32,7 +22,7 @@ test('renders trading table', () => {
 
 test('renders trading table columns', () => {
   
-  const testStore = mockStore(initialiState)
+  const testStore = mockStore(initialState)
 
   render(
     <BrowserRouter>
@@ -53,7 +43,7 @@ test('renders trading table columns', () => {
 
 test('renders empty trading table (no data rows)', () => {
 
-  const testStore = mockStore(initialiState)
+  const testStore = mockStore(initialState)
 
   render(
     <BrowserRouter>
