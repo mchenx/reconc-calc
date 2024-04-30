@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { loadTradings, getReports, clearReports } from '../store/TradingSlice';
-import { useAppDispatch } from '..';
+import { useAppDispatch } from '../App';
 import { ReportTableContainer } from './ReportTableContainer';
 
 

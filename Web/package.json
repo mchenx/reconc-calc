@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
+    "@reduxjs/toolkit": "^2.2.3",
     "@tanstack/react-table": "^8.16.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -48,9 +48,14 @@
     ]
   },
   "devDependencies": {
-    "@types/redux-mock-store": "^1.0.3",
+    "@types/redux-mock-store": "^1.0.6",
     "axios-mock-adapter": "^1.22.0",
     "redux-mock-store": "^1.5.4",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^3.1.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   }
 }

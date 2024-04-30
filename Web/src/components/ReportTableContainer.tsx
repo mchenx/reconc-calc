@@ -1,6 +1,6 @@
 import { IReport } from '../store/TradingSlice';
 import './ReportTable.css'
-import { useAppSelector } from '..';
+import { useAppSelector } from '../App';
 import { ReportTable } from './ReportTable';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

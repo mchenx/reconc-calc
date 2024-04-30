@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
-import tradingSlice, { ITradingState } from './store/TradingSlice';
+import tradingSlice from './store/TradingSlice';
 import { configureStore } from '@reduxjs/toolkit';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 
 const store = configureStore({
   preloadedState: {},
@@ -22,10 +22,6 @@ const store = configureStore({
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch;
-
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
-export const useAppSelector = useSelector.withTypes<RootState>()
-// export const useAppStore = useStore.withTypes<AppStore>()
 
 export const getStore = () => {
   return store;
