@@ -14,7 +14,6 @@ export interface ITrading {
     amountInJDE: number,
     pdRate: number,
     expectedLoss: number,
-    acctTitle: string
     sfAccountTitle: string,   // same as counterparty name in JDE
     insuranceRate: number,
     insuranceLimit: number,

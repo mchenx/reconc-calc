@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/axios-mock-adapter": "^1.10.0",
     "@types/redux-mock-store": "^1.0.6",
     "axios-mock-adapter": "^1.22.0",
     "redux-mock-store": "^1.5.4",
@@ -55,7 +56,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "axios": "axios/dist/node/axios.cjs"
+      "^axios$": "axios/dist/node/axios.cjs"
     }
   }
 }
